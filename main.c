@@ -76,30 +76,17 @@ struct node* find(int number) {
 }
 
 //delete a link with given key
-struct node* delete(int number) {
-
-   struct node* current = head;
-   struct node* previous = NULL;
-
-   if(head == NULL) {
-      return NULL;
-   }
-
-   while(current->key != number) {
-      if(current->next == NULL) {
-         return NULL;
-      } else {
-         previous = current;
-         current = current->next;
-      }
-   }
-   if(current == head) {
-      head = head->next;
-   } else {
-      previous->next = current->next;
-   }    
-	
-   return current;
+struct node* delete(int index){
+    struct node* current  = head;
+    struct node* next = head->next;
+    for (int i = 0; i < index-1; i++)
+    {
+        current = current->next;
+        next = next->next;
+    }
+    current->next = next->next;
+    free(next);
+    return head;
 }
 
 void sort() {
