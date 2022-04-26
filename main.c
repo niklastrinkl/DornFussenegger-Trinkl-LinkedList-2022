@@ -65,58 +65,37 @@ int length() {
 }
 
 //find a link with given key
-struct node* find(int key) {
-
+struct node* find(int number) {
    struct node* current = head;
-
-   if(head == NULL) {
-      return NULL;
+   while (current != NULL) {
+       if (current->key == number)
+           return current;
+       current = current->next;
    }
-
-   while(current->key != key) {
-	
-      if(current->next == NULL) {
-         return NULL;
-      } else {
-         current = current->next;
-      }
-   }      
-
-   return current;
+   return NULL;
 }
 
 //delete a link with given key
-struct node* delete(int key) {
+struct node* delete(int number) {
 
-   //start from the first link
    struct node* current = head;
    struct node* previous = NULL;
-	
-   //if list is empty
+
    if(head == NULL) {
       return NULL;
    }
 
-   //navigate through list
-   while(current->key != key) {
-
-      //if it is last node
+   while(current->key != number) {
       if(current->next == NULL) {
          return NULL;
       } else {
-         //store reference to current link
          previous = current;
-         //move to next link
          current = current->next;
       }
    }
-
-   //found a match, update the link
    if(current == head) {
-      //change first to point to next link
       head = head->next;
    } else {
-      //bypass the current link
       previous->next = current->next;
    }    
 	
