@@ -148,7 +148,7 @@ void reverse(struct node** head_ref) {
    *head_ref = prev;
 }
 
-void main() {
+int main() {
    insertFirst(1,10);
    insertFirst(2,20);
    insertFirst(3,30);
@@ -213,4 +213,5 @@ void main() {
    reverse(&head);
    printf("\nList after reversing the data: ");
    printList();
+   return 0;
 }
